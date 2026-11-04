@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import Link from 'next/link';
 import { ArrowLeft } from 'react-feather';
 import { supabase } from '../../../lib/supabase';
