@@ -9,11 +9,20 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.117.3",
+    "@tiptap/extension-image": "^3.32.2",
+    "@tiptap/extension-youtube": "^3.32.2",
+    "@tiptap/react": "^3.32.2",
+    "@tiptap/starter-kit": "^3.32.2",
     "next": "16.4.1",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "react-feather": "^2.0.10",
+    "react-hot-toast": "^2.6.1",
+    "tiptap-extension-resize-image": "^1.4.7"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.16",
     "@tailwindcss/turbopack": "^4",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
