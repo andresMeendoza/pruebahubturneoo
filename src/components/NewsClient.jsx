@@ -12,6 +12,16 @@ export default function NewsClient({ posts, categorias, systemColors }) {
     const [selectedCategory, setSelectedCategory] = useState('Todas');
     const [viewMode, setViewMode] = useState('grid');
 
+    
+    const categoriasUsadas = new Set(posts.map(post => post.category).filter(Boolean));
+
+   
+    const categoriasActivas = categorias.filter(cat => {
+        // En caso de que tengas 'Todas' dentro de tu array original, lo respetamos
+        const nombreCat = typeof cat === 'string' ? cat : cat.name;
+        return categoriasUsadas.has(nombreCat) || nombreCat === 'Todas';
+    });
+
     const filteredPosts = posts.filter(post => {
         const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                               (post.category && post.category.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -44,7 +54,7 @@ export default function NewsClient({ posts, categorias, systemColors }) {
                 value: searchTerm,
                 onChange: setSearchTerm,
             }}
-            categories={categorias}
+            categories={categoriasActivas}
             selectedCategory={selectedCategory}
             onSelectCategory={setSelectedCategory}
         >

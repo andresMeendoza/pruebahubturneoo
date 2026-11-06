@@ -86,7 +86,9 @@ function LessonRow({ lesson, module, seen }) {
 export default function AcademyHome({ modules, accentColor, searchTerm, onSearchChange }) {
     const seen = useSeenLessons();
 
-    const entries = modules.flatMap((module) => module.lessons.map((lesson) => ({ lesson, module })));
+    const modulosActivos = modules.filter((module) => module.lessons && module.lessons.length > 0);
+
+    const entries = modulosActivos.flatMap((module) => module.lessons.map((lesson) => ({ lesson, module })));
     const totalLessons = entries.length;
     const seenLessons = entries.filter(({ lesson }) => seen.has(lesson.slug)).length;
     const pinned = entries.filter(({ lesson }) => lesson.is_pinned);
@@ -114,7 +116,7 @@ export default function AcademyHome({ modules, accentColor, searchTerm, onSearch
                     <p className="text-lg text-muted">Tutoriales paso a paso para organizar tu negocio y dominar la plataforma.</p>
                     {totalLessons > 0 && (
                         <ul className="mt-3 flex flex-wrap gap-2 text-sm text-muted">
-                            <li className="rounded-full border border-line bg-surface px-3 py-1"><strong className="text-ink">{modules.length}</strong> {modules.length === 1 ? 'módulo' : 'módulos'}</li>
+                            <li className="rounded-full border border-line bg-surface px-3 py-1"><strong className="text-ink">{modulosActivos.length}</strong> {modulosActivos.length === 1 ? 'módulo' : 'módulos'}</li>
                             <li className="rounded-full border border-line bg-surface px-3 py-1"><strong className="text-ink">{totalLessons}</strong> {totalLessons === 1 ? 'lección' : 'lecciones'}</li>
                         </ul>
                     )}
@@ -160,7 +162,7 @@ export default function AcademyHome({ modules, accentColor, searchTerm, onSearch
                             action={<button type="button" onClick={() => onSearchChange('')} className="btn btn-secondary btn-sm">Ver todos los módulos</button>}
                         />
                     )
-                ) : modules.length === 0 ? (
+                ) : modulosActivos.length === 0 ? (
                     <EmptyState
                         icon={BookOpen}
                         title="Aún no hay lecciones publicadas"
@@ -180,7 +182,7 @@ export default function AcademyHome({ modules, accentColor, searchTerm, onSearch
                             </section>
                         )}
                         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                            {modules.map((module) => (
+                            {modulosActivos.map((module) => (
                                 <ModuleCard key={module.name} module={module} seen={seen} />
                             ))}
                         </div>
