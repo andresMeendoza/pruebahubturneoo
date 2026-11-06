@@ -12,10 +12,17 @@ export default function NewsClient({ posts, categorias, systemColors }) {
     const [selectedCategory, setSelectedCategory] = useState('Todas');
     const [viewMode, setViewMode] = useState('grid');
 
+<<<<<<< HEAD
     // 1. NUEVA LÍNEA: Creamos un Set (colección única) con las categorías que realmente tienen artículos publicados
     const categoriasUsadas = new Set(posts.map(post => post.category).filter(Boolean));
 
     // 2. NUEVA LÍNEA: Filtramos la lista general de categorías para dejar solo las que existen en los posts
+=======
+    
+    const categoriasUsadas = new Set(posts.map(post => post.category).filter(Boolean));
+
+   
+>>>>>>> version-actualizada
     const categoriasActivas = categorias.filter(cat => {
         // En caso de que tengas 'Todas' dentro de tu array original, lo respetamos
         const nombreCat = typeof cat === 'string' ? cat : cat.name;
@@ -54,7 +61,7 @@ export default function NewsClient({ posts, categorias, systemColors }) {
                 value: searchTerm,
                 onChange: setSearchTerm,
             }}
-            // 3. CAMBIO AQUÍ: Le pasamos al componente de la interfaz solo las categorías con contenido
+
             categories={categoriasActivas}
             selectedCategory={selectedCategory}
             onSelectCategory={setSelectedCategory}
