@@ -86,7 +86,12 @@ function LessonRow({ lesson, module, seen }) {
 export default function AcademyHome({ modules, accentColor, searchTerm, onSearchChange }) {
     const seen = useSeenLessons();
 
-    const modulosActivos = modules.filter((module) => module.lessons && module.lessons.length > 0);
+    const modulosActivos = modules
+    .filter((module) => module.lessons && module.lessons.length > 0)
+    .map((module, index) => ({
+        ...module,
+        number: index + 1
+    }));
 
     const entries = modulosActivos.flatMap((module) => module.lessons.map((lesson) => ({ lesson, module })));
     const totalLessons = entries.length;
