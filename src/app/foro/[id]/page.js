@@ -1,4 +1,4 @@
-export const runtime = 'edge';
+
 import { notFound } from 'next/navigation';
 import { getThread } from '../../../lib/content';
 import { threadJsonLd, threadMetadata } from '../../../lib/seo';
