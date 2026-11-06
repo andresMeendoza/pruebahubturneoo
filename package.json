@@ -14,12 +14,16 @@
     "@tiptap/extension-youtube": "^3.32.2",
     "@tiptap/react": "^3.32.2",
     "@tiptap/starter-kit": "^3.32.2",
+    "browser-image-compression": "^2.0.2",
+    "heic2any": "^0.0.4",
     "next": "16.4.1",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-feather": "^2.0.10",
     "react-hot-toast": "^2.6.1",
-    "tiptap-extension-resize-image": "^1.4.7"
+    "sanitize-html": "^2.18.1",
+    "tiptap-extension-resize-image": "^1.4.7",
+    "utif2": "^4.1.0"
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.13.16",

@@ -10,6 +10,15 @@ const nextConfig = {
       },
     },
   },
+  async redirects() {
+    return [
+      // El listado de lecciones vive en el inicio.
+      { source: "/ayuda", destination: "/", permanent: true },
+      // Direcciones anteriores de las lecciones.
+      { source: "/blog", destination: "/", permanent: true },
+      { source: "/blog/:slug", destination: "/ayuda/:slug", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;
